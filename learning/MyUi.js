@@ -12,7 +12,7 @@ import {styles, styles1} from './Styles';
 function mainUi(props) {
   //   console.log(something);
   //   let varTest = something;
-  //   varTest = 'New thing';
+  //   varTest = 'New thing'; really?
   props.something();
 
   // HOOKS!!!!!! -> hook it to something or a use case
