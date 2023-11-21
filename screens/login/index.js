@@ -2,7 +2,6 @@ import {View} from 'react-native';
 import React, {useState} from 'react';
 import styles from './style';
 import {ButtonCustom, TextInputCustom} from '../../components';
-
 const Login = props => {
   const [emailState, setEmailState] = useState('');
   const [passwordState, setPasswordState] = useState('');

@@ -1,5 +1,18 @@
+import {faChevronRight} from '@fortawesome/free-solid-svg-icons/faChevronRight';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+// import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
+
 import React from 'react';
-import {View, Text, Image, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 
 const Dashboard = props => {
   const {text, title} = props.route.params;
@@ -40,14 +53,33 @@ const Dashboard = props => {
         item.id;
       }}
       renderItem={({item}) => (
-        <View
+        <TouchableOpacity
+          onPress={() => {
+            Alert.alert(
+              'Alert Title',
+              'My Alert Msg',
+              [
+                {
+                  text: 'Cancel',
+                  // onPress: () => Alert.alert('Cancel Pressed'),
+                  style: 'cancel',
+                },
+              ],
+              {
+                cancelable: true,
+                // onDismiss: () =>
+                //   Alert.alert(
+                //     'This alert was dismissed by tapping outside of the alert dialog.',
+                //   ),
+              },
+            );
+          }}
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-between',
             backgroundColor: 'lightgray',
             borderRadius: 8,
-            marginHorizontal: 16,
-            marginBottom: 8,
+            marginHorizontal: 12,
+            marginBottom: 12,
             alignItems: 'center',
           }}>
           <Image
@@ -58,13 +90,14 @@ const Dashboard = props => {
               }/200`,
             }}
           />
-          <View style={{flex: 1, width: '80%', marginHorizontal: 8}}>
+          <View style={{flex: 1, marginHorizontal: 8}}>
             <Text style={{fontFamily: 'sans-serif', fontSize: 18}}>
               {item.name}
             </Text>
             <Text>{item.desc}</Text>
           </View>
-        </View>
+          <FontAwesomeIcon style={{marginEnd: 12}} icon={faChevronRight} />
+        </TouchableOpacity>
       )}
     />
   );
